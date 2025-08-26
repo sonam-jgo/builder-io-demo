@@ -74,13 +74,13 @@ class ShoppingCategoriesScreen extends StatelessWidget {
                     ),
                   ],
                 ),
-                const SizedBox(height: 22),
+                SizedBox(height: isSmallScreen ? 16 : 22),
                 // Divider
                 Container(
                   height: 1,
                   color: const Color(0xFFE3E3E3),
                 ),
-                const SizedBox(height: 22),
+                SizedBox(height: isSmallScreen ? 16 : 22),
                 // Pet categories list
                 ...PetData.pets.asMap().entries.map((entry) {
                   final index = entry.key;
@@ -102,12 +102,12 @@ class ShoppingCategoriesScreen extends StatelessWidget {
                         },
                       ),
                       if (!isLast) ...[
-                        const SizedBox(height: 22),
+                        SizedBox(height: isSmallScreen ? 16 : 22),
                         Container(
                           height: 1,
                           color: const Color(0xFFE3E3E3),
                         ),
-                        const SizedBox(height: 22),
+                        SizedBox(height: isSmallScreen ? 16 : 22),
                       ],
                     ],
                   );
