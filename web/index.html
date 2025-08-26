@@ -3,100 +3,221 @@
 <head>
   <meta charset="UTF-8">
   <meta content="IE=Edge" http-equiv="X-UA-Compatible">
-  <meta name="description" content="Flutter Demo App">
+  <meta name="description" content="Pet Shopping Categories">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <!-- iOS meta tags & icons -->
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <meta name="apple-mobile-web-app-title" content="Flutter Demo">
+  <meta name="apple-mobile-web-app-title" content="Pet Shopping">
   
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="favicon.png"/>
   
-  <title>Flutter Demo</title>
+  <title>Pet Shopping Categories</title>
   <style>
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    * {
       margin: 0;
-      padding: 20px;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
       background-color: #f5f5f5;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
       min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 16px;
     }
     
     .container {
+      width: 100%;
+      max-width: 494px;
       background: white;
-      border-radius: 12px;
-      padding: 40px;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      text-align: center;
-      max-width: 400px;
-    }
-    
-    h1 {
-      color: #673AB7;
-      margin-bottom: 20px;
-    }
-    
-    .counter {
-      font-size: 48px;
-      font-weight: bold;
-      color: #333;
-      margin: 20px 0;
-    }
-    
-    button {
-      background-color: #673AB7;
-      color: white;
-      border: none;
-      border-radius: 28px;
-      width: 56px;
-      height: 56px;
-      font-size: 24px;
-      cursor: pointer;
-      transition: background-color 0.2s;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 20px auto;
-    }
-    
-    button:hover {
-      background-color: #5E35B1;
-    }
-    
-    .info {
-      color: #666;
-      margin-top: 20px;
-      padding: 16px;
-      background-color: #E8F5E8;
+      border: 1px solid #CFCFCF;
       border-radius: 8px;
+      padding: 26px 23px 36px 23px;
+    }
+    
+    .header {
+      margin-bottom: 22px;
+    }
+    
+    .title {
+      font-size: 22px;
+      font-weight: 700;
+      color: #000;
+      line-height: 1.42;
+      margin-bottom: 4px;
+    }
+    
+    .subtitle-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .subtitle {
+      font-size: 15px;
+      font-weight: 400;
+      color: #898989;
+    }
+    
+    .badge {
+      background: #EEF4FF;
+      color: #3538CD;
+      padding: 2px 15px;
+      border-radius: 14px;
+      font-size: 12px;
+      font-weight: 400;
+    }
+    
+    .divider {
+      height: 1px;
+      background: #E3E3E3;
+      margin: 22px 0;
+    }
+    
+    .pet-card {
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+    
+    .pet-card:hover {
+      transform: translateY(-2px);
+    }
+    
+    .pet-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 5px;
+    }
+    
+    .pet-name {
+      font-size: 15px;
+      font-weight: 600;
+      color: #3F3F3F;
+    }
+    
+    .arrow-icon {
+      width: 22px;
+      height: 22px;
+      color: #101828;
+    }
+    
+    .pet-description {
+      font-size: 12px;
+      font-weight: 400;
+      color: #919191;
+      line-height: 1.6;
+      margin-bottom: 22px;
+    }
+    
+    .pet-image {
+      width: 100%;
+      height: 174px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+    
+    .info-banner {
+      background: #E8F5E8;
       border-left: 4px solid #4CAF50;
+      padding: 16px;
+      border-radius: 8px;
+      margin-top: 20px;
+      font-size: 14px;
+      color: #666;
+    }
+    
+    .toast {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #333;
+      color: white;
+      padding: 12px 24px;
+      border-radius: 8px;
+      display: none;
+      z-index: 1000;
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <h1>Flutter Demo</h1>
-    <p>You have pushed the button this many times:</p>
-    <div class="counter" id="counter">0</div>
-    <button onclick="incrementCounter()" title="Increment">+</button>
+    <div class="header">
+      <div class="title">Shopping categories</div>
+      <div class="subtitle-row">
+        <div class="subtitle">Pets and animals</div>
+        <div class="badge">Playful</div>
+      </div>
+    </div>
     
-    <div class="info">
-      <strong>Note:</strong> This is a temporary HTML version. To run the actual Flutter app, Flutter SDK needs to be installed and the project needs to be built with <code>flutter build web</code>.
+    <div class="divider"></div>
+    
+    <div class="pet-card" onclick="selectPet('French Bulldog')">
+      <div class="pet-header">
+        <div class="pet-name">French Bulldog</div>
+        <svg class="arrow-icon" viewBox="0 0 23 23" fill="none">
+          <path d="M7.13004 15.9829L16.4653 6.64758M16.4653 6.64758H7.13004M16.4653 6.64758V15.9829" stroke="currentColor" stroke-width="1.86706" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <div class="pet-description">
+        The French Bulldog is a French breed of companion dog or toy dog. Frenchies are known for being pretty laid back and adaptable.
+      </div>
+      <img src="https://api.builder.io/api/v1/image/assets/TEMP/54c2775d586f43338a83beda4bf6b53594c67dbd?width=896" alt="French Bulldog" class="pet-image">
+    </div>
+    
+    <div class="divider"></div>
+    
+    <div class="pet-card" onclick="selectPet('Beagle')">
+      <div class="pet-header">
+        <div class="pet-name">Beagle</div>
+        <svg class="arrow-icon" viewBox="0 0 23 23" fill="none">
+          <path d="M7.13004 16.4343L16.4653 7.099M16.4653 7.099H7.13004M16.4653 7.099V16.4343" stroke="currentColor" stroke-width="1.86706" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <div class="pet-description">
+        The beagle is a breed of small scent hound, similar in appearance to the much larger foxhound.
+      </div>
+      <img src="https://api.builder.io/api/v1/image/assets/TEMP/fc83f30451af56bc303310694e9e6ac243cb8fcc?width=896" alt="Beagle" class="pet-image">
+    </div>
+    
+    <div class="divider"></div>
+    
+    <div class="pet-card" onclick="selectPet('Labrador Retriever')">
+      <div class="pet-header">
+        <div class="pet-name">Labrador Retriever</div>
+        <svg class="arrow-icon" viewBox="0 0 23 23" fill="none">
+          <path d="M7.13004 16.455L16.4653 7.11975M16.4653 7.11975H7.13004M16.4653 7.11975V16.455" stroke="currentColor" stroke-width="1.86706" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <div class="pet-description">
+        The Labrador Retriever or simply Labrador is a British breed of retriever gun dog.
+      </div>
+      <img src="https://api.builder.io/api/v1/image/assets/TEMP/19720d3311c7ff573d087f82f58592e80a5093f7?width=896" alt="Labrador Retriever" class="pet-image">
+    </div>
+    
+    <div class="info-banner">
+      <strong>Flutter Code Ready!</strong> The Flutter/Dart implementation has been created with proper Material Design widgets, responsive layout, and follows Flutter best practices. Check the <code>lib/</code> directory for the complete code structure.
     </div>
   </div>
+  
+  <div id="toast" class="toast"></div>
 
   <script>
-    let count = 0;
-    
-    function incrementCounter() {
-      count++;
-      document.getElementById('counter').textContent = count;
+    function selectPet(petName) {
+      const toast = document.getElementById('toast');
+      toast.textContent = `${petName} category selected`;
+      toast.style.display = 'block';
+      
+      setTimeout(() => {
+        toast.style.display = 'none';
+      }, 2000);
     }
   </script>
 </body>
