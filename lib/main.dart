@@ -38,8 +38,7 @@ class MyApp extends StatelessWidget {
           ),
         ),
       ),
-      home: const BackgroundScreen(
-      ),
+      home: const BackgroundScreen(),
       debugShowCheckedModeBanner: false,
     );
   }
