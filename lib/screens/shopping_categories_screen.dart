@@ -9,13 +9,10 @@ class ShoppingCategoriesScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
     final isSmallScreen = screenWidth < 600;
-    
-    return Scaffold(
-      backgroundColor: const Color(0xFFF5F5F5),
-      body: SafeArea(
-        child: SingleChildScrollView(
-          child: Center(
-            child: Container(
+
+    return SingleChildScrollView(
+      child: Center(
+        child: Container(
               width: double.infinity,
               constraints: BoxConstraints(
                 maxWidth: isSmallScreen ? screenWidth - 32 : 494,
@@ -28,14 +25,19 @@ class ShoppingCategoriesScreen extends StatelessWidget {
                 isSmallScreen ? 24 : 36,
               ),
               decoration: BoxDecoration(
-                color: Colors.white,
-                border: Border.all(color: const Color(0xFFCFCFCF)),
-                borderRadius: BorderRadius.circular(8),
+                color: Colors.white.withOpacity(0.95),
+                border: Border.all(color: const Color(0xFFCFCFCF).withOpacity(0.3)),
+                borderRadius: BorderRadius.circular(12),
                 boxShadow: [
                   BoxShadow(
-                    color: Colors.black.withOpacity(0.1),
-                    blurRadius: 8,
-                    offset: const Offset(0, 2),
+                    color: Colors.black.withOpacity(0.3),
+                    blurRadius: 20,
+                    offset: const Offset(0, 10),
+                  ),
+                  BoxShadow(
+                    color: const Color(0xFF6D55FF).withOpacity(0.1),
+                    blurRadius: 40,
+                    offset: const Offset(0, 0),
                   ),
                 ],
               ),
@@ -137,7 +139,6 @@ class ShoppingCategoriesScreen extends StatelessWidget {
             ),
           ),
         ),
-      ),
-    );
+      );
   }
 }
